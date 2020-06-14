@@ -1,17 +1,17 @@
 import React from "react";
+import RecipePage from "./RecipePage"
 
 function RecipeCard(props) {
-  console.log(props);
+  const viewRecipe = () => {
+    props.fetchRecipeInfo(props.recipe)
+    return <RecipePage />
+  };
+
   return (
     <div className="card">
-      <img src={props.recipe.image} alt="food" />
-      <h3>{props.recipe.title}</h3>
-      <p>
-        calories:{props.recipe.calories} carbs:{props.recipe.carbs}
-      </p>
-      <p>
-        fat:{props.recipe.fat} protein:{props.recipe.protein}
-      </p>
+      <img src={props.recipe.strMealThumb} alt="food" />
+      <h3>{props.recipe.strMeal}</h3>
+      <button onClick={viewRecipe}>View Recipe</button>
     </div>
   );
 }
