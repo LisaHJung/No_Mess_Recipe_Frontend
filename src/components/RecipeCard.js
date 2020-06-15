@@ -3,8 +3,7 @@ import RecipePage from "./RecipePage"
 
 function RecipeCard(props) {
   const viewRecipe = () => {
-    props.fetchRecipeInfo(props.recipe)
-    return <RecipePage />
+    props.fetchRecipeInfo(props.recipe, props.history)
   };
 
   return (

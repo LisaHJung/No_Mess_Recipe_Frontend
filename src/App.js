@@ -14,6 +14,4 @@ function App() {
   );
 }
 
-export default App;
-
-// ML trained model
+export default App

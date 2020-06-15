@@ -14,6 +14,7 @@ const SearchRecipes = (props) => {
         />
       </form>
       <ShowRecipes
+        history={props.history}
         recipes={props.recipes}
         searchInput={props.searchInput}
         captureInput={props.captureInput}
