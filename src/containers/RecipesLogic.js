@@ -1,6 +1,7 @@
 import React from "react";
 import SearchRecipes from "../components/SearchRecipes";
 import RecipePage from "../components/RecipePage";
+import Favorites from "../components/Favorites";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class Recipes extends React.Component {
@@ -42,6 +43,10 @@ class Recipes extends React.Component {
       });
   };
 
+  addToFavorites =() =>{
+    
+  }
+
   render() {
     return (
       <div>
@@ -67,12 +72,13 @@ class Recipes extends React.Component {
               path="/recipe"
               render={(props) => (
                 <RecipePage
+                  {...props}
                   instructions={this.state.instructions}
                   fetchRecipeInfo={this.fetchRecipeInfo}
                 />
               )}
             />
-            <Route path="/favorites" render={(props) => <RecipePage />} />
+            <Route path="/favorites" render={(props) => <Favorites />} />
           </Switch>
         </Router>
       </div>
