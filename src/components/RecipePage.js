@@ -4,9 +4,17 @@ function RecipePage(props) {
   const showRecipe = () => {
     return (
       <div>
+        <button> Add to Favorites</button>
+        <button
+          onClick={() => {
+            props.history.push("/favorites");
+          }}
+        >
+          View Favorites
+        </button>
         <ul>
           <li className="card">
-            How to video: {props.instructions[0].strYoutube}
+            How-to video: {props.instructions[0].strYoutube}
           </li>
           <li className="card">
             Ingredients: {props.instructions[0].strMeasure1} of{" "}
@@ -16,8 +24,6 @@ function RecipePage(props) {
             Instructions: {props.instructions[0].strInstructions}
           </li>
         </ul>
-        <button> Add to Favorites</button>
-        <button onClick={()=>props.history.pushState('/favorites')}> View Favorites</button>
       </div>
     );
   };
