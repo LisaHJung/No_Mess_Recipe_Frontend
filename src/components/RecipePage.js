@@ -1,10 +1,20 @@
 import React from "react";
 
 function RecipePage(props) {
+  const createFavorites = () => {
+    fetch("http://localhost:3000/favorites", {
+      method: "POST",
+      headers: {
+        "Contnet-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({}),
+    });
+  };
   const showRecipe = () => {
     return (
       <div>
-        <button> Add to Favorites</button>
+        <button onClick={createFavorites}> Add to Favorites</button>
         <button
           onClick={() => {
             props.history.push("/favorites");

@@ -43,9 +43,7 @@ class Recipes extends React.Component {
       });
   };
 
-  addToFavorites =() =>{
-    
-  }
+
 
   render() {
     return (
@@ -78,7 +76,7 @@ class Recipes extends React.Component {
                 />
               )}
             />
-            <Route path="/favorites" render={(props) => <Favorites />} />
+            <Route path="/favorites" render={(props) => <Favorites {...props}/>} />
           </Switch>
         </Router>
       </div>
