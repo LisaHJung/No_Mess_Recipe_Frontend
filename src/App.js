@@ -2,16 +2,16 @@ import React from "react";
 // import * as tf from '@tensorflow/tfjs';
 // import * as speechCommands from '@tensorflow-models/speech-commands'
 import "./App.css";
-import MainPage from "./containers/MainPage";
+import RecipesLogic from "./containers/RecipesLogic";
+import BackgroundVideo from './components/BackgroundVideo';
 
 function App() {
   return (
     <div className="App">
-      <MainPage />
+      {/* <BackgroundVideo /> */}
+      <RecipesLogic />
     </div>
   );
 }
 
-export default App;
-
-// ML trained model
+export default App

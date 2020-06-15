@@ -1,13 +1,16 @@
 import React from "react";
 import SearchRecipes from "../components/SearchRecipes";
+import RecipePage from "../components/RecipePage";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class Recipes extends React.Component {
   state = {
-    recipes: [],
     searchInput: "",
+    recipes: [],
+    instructions: [],
   };
 
-  storeRecipes = (event) => {
+  captureInput = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -15,23 +18,63 @@ class Recipes extends React.Component {
   fetchRecipes = (event) => {
     event.preventDefault();
     fetch(
-      `https://api.spoonacular.com/recipes/findByNutrients?apiKey=[]&maxProtein=${this.state.searchInput}`
+      `https://www.themealdb.com/api/json/v1/1/filter.php?i=${this.state.searchInput}`
     )
       .then((response) => response.json())
       .then((recipes) => {
-        this.setState({ recipes });
+        this.setState({
+          recipes: recipes.meals,
+          ids: recipes.meals.map((meal) => meal.idMeal),
+        });
+      });
+  };
+
+  fetchRecipeInfo = (recipe, history) => {
+    fetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`
+    )
+      .then((response) => response.json())
+      .then((instructions) => {
+        this.setState({
+          instructions: instructions.meals,
+        });
+        history.push("/recipe");
       });
   };
 
   render() {
     return (
       <div>
-        <SearchRecipes
-          recipes={this.state.recipes}
-          searchInput={this.state.searchInput}
-          storeRecipes={this.storeRecipes}
-          fetchRecipes={this.fetchRecipes}
-        />
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <SearchRecipes
+                  {...props}
+                  recipes={this.state.recipes}
+                  instructions={this.state.recipes}
+                  searchInput={this.state.searchInput}
+                  captureInput={this.captureInput}
+                  fetchRecipes={this.fetchRecipes}
+                  fetchRecipeInfo={this.fetchRecipeInfo}
+                  handleClick={this.handleClick}
+                />
+              )}
+            />
+            <Route
+              path="/recipe"
+              render={(props) => (
+                <RecipePage
+                  instructions={this.state.instructions}
+                  fetchRecipeInfo={this.fetchRecipeInfo}
+                />
+              )}
+            />
+            <Route path="/favorites" render={(props) => <RecipePage />} />
+          </Switch>
+        </Router>
       </div>
     );
   }

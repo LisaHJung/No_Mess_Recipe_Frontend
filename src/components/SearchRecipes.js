@@ -8,16 +8,18 @@ const SearchRecipes = (props) => {
         <input
           className="search-box"
           name="searchInput"
-          onChange={props.storeRecipes}
+          onChange={props.captureInput}
           type="text"
-          placeholder="Search Recipes Here"
+          placeholder="Enter ingredient here"
         />
       </form>
       <ShowRecipes
+        history={props.history}
         recipes={props.recipes}
         searchInput={props.searchInput}
-        storeRecipes={props.storeRecipes}
+        captureInput={props.captureInput}
         fetchRecipes={props.fetchRecipes}
+        fetchRecipeInfo={props.fetchRecipeInfo}
       />
     </div>
   );
