@@ -45,19 +45,19 @@ class App extends React.Component {
 export default App;
 
 
-// import React from "react";
-// import "./App.css";
-// import RecipesLogic from "./containers/RecipesLogic"
+import React from "react";
+import "./App.css";
+import RecipesLogic from "./containers/RecipesLogic"
 
-// class App extends React.Component {
+class App extends React.Component {
   
-//   render() {
-//     return (
-//       <div className="App">
-//         <RecipesLogic />
-//       </div>
-//     );
-//   }
-// }
+  render() {
+    return (
+      <div className="App">
+        <RecipesLogic />
+      </div>
+    );
+  }
+}
 
-// export default App;
+export default App;

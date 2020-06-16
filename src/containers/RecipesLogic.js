@@ -2,6 +2,7 @@ import React from "react";
 import SearchRecipes from "../components/SearchRecipes";
 import RecipePage from "../components/RecipePage";
 import Favorites from "../components/Favorites";
+import FavoritesCard from "../components/FavoritesCard"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class Recipes extends React.Component {
@@ -9,6 +10,7 @@ class Recipes extends React.Component {
     searchInput: "",
     recipes: [],
     instructions: [],
+    favorites: []
   };
 
   captureInput = (event) => {
@@ -43,6 +45,19 @@ class Recipes extends React.Component {
       });
   };
 
+  addToFavorites = (recipe) => {
+    if(!this.state.favorites.find(PinnedRecipe => PinnedRecipe.id === recipe.idMeal))
+    this.setState({
+      favorites: [...this.state.favorites, recipe]
+    })
+  }
+
+  removeFavorite =(recipe) =>{
+    const filtered = this.state.favorites.filter(PinnedRecipe => PinnedRecipe.id === recipe.idMeal)
+    this.setState({
+      favorites: filtered
+    })
+  }
 
 
   render() {
@@ -73,10 +88,16 @@ class Recipes extends React.Component {
                   {...props}
                   instructions={this.state.instructions}
                   fetchRecipeInfo={this.fetchRecipeInfo}
+                  favorites={this.state.favorites}
+                  addToFavorites={this.addToFavorites}
+                  showFavorites={this.showFavorites}
                 />
               )}
             />
-            <Route path="/favorites" render={(props) => <Favorites {...props}/>} />
+            <Route
+              path="/favorites"
+              render={(props) => <Favorites {...props} favorites={this.state.favorites} removeFavorite={this.removeFavorite}/>}
+            />
           </Switch>
         </Router>
       </div>

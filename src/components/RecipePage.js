@@ -2,15 +2,23 @@ import React from "react";
 
 function RecipePage(props) {
   const createFavorites = () => {
-    fetch("http://localhost:3000/favorites", {
-      method: "POST",
-      headers: {
-        "Contnet-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({}),
-    });
+    props.addToFavorites(props.instructions[0])
+//     fetch("http://localhost:3000/favorites", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${localStorage.getItem("token")}`,
+//       },
+//       body: JSON.stringify({
+//         name: props.instructions[0].strMeal,
+//         image: props.instructions[0].strMealThumb,
+//         video: props.instructions[0].strYoutube,
+//         ingredients: props.instructions[0].strIngredient1,
+//         instructions: props.instructions[0].strInstructions,
+//       }),
+//     });
   };
+
   const showRecipe = () => {
     return (
       <div>
@@ -23,6 +31,8 @@ function RecipePage(props) {
           View Favorites
         </button>
         <ul>
+          <img src={props.instructions[0].strMealThumb} />
+          <li className="card">{props.instructions[0].strMeal}</li>
           <li className="card">
             How-to video: {props.instructions[0].strYoutube}
           </li>
@@ -45,3 +55,5 @@ function RecipePage(props) {
   );
 }
 export default RecipePage;
+
+
