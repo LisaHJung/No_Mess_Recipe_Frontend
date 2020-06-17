@@ -60,14 +60,24 @@ class Recipes extends React.Component {
         ingredients: recipe.strIngredient1,
         instructions: recipe.strInstructions,
       }),
-    })
+    });
   };
 
-  // fetchFavorites
-  // componentDidMount() {
-  //   fetch
-  //   set state to favorites
-  // }
+  componentDidMount() {
+    fetch("http://localhost:4000/favorites",{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((favorites) => {
+        this.setState({
+          favorites,
+        });
+      });
+  }
 
   addToFavorites = (recipe) => {
     if (
@@ -88,6 +98,10 @@ class Recipes extends React.Component {
       favorites: filtered,
     });
   };
+
+  deleteFromBackend =(recipe)=>{
+    fetch(`http://localhost:4000/favorites/${recipe.id}`, {method: "DELETE"})
+  }
 
   render() {
     return (
@@ -131,6 +145,7 @@ class Recipes extends React.Component {
                   {...props}
                   favorites={this.state.favorites}
                   removeFavorite={this.removeFavorite}
+                  deleteFromBackend={this.deleteFromBackend}
                 />
               )}
             />

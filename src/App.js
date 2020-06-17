@@ -7,7 +7,7 @@ import {
   Route, 
   Redirect 
 } from "react-router-dom";
-// import BackgroundVideo from './components/BackgroundVideo';
+
 
 function App() {
   return (
