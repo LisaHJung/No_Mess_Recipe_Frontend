@@ -4,7 +4,7 @@ import ShowRecipes from "./ShowRecipes";
 const SearchRecipes = (props) => {
   return (
     <div>
-      <form onSubmit={props.fetchRecipes}>
+      <form className="search-form" onSubmit={props.fetchRecipes}>
         <input
           className="search-box"
           name="searchInput"

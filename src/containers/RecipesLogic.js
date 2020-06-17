@@ -80,6 +80,7 @@ class Recipes extends React.Component {
   }
 
   addToFavorites = (recipe) => {
+    console.log(recipe)
     if (
       !this.state.favorites.find(
         (PinnedRecipe) => PinnedRecipe.id === recipe.idMeal
@@ -92,7 +93,11 @@ class Recipes extends React.Component {
 
   removeFavorite = (recipe) => {
     const filtered = this.state.favorites.filter(
-      (PinnedRecipe) => PinnedRecipe.id !== recipe.idMeal
+      (PinnedRecipe) => {
+        console.log("pinned recipe" , PinnedRecipe)
+        console.log("recipe", recipe)
+        return PinnedRecipe.id !== recipe.id
+      }
     );
     this.setState({
       favorites: filtered,

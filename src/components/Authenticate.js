@@ -16,10 +16,12 @@ class Authenticate extends React.Component {
  
     return (
       <div className="authenticate">
+        <nav className="navbar navbar-dark fixed-top"> 
         {isLoggedIn ? <Login history={history}/> : <Signup />}
         <button onClick={this.toggleLoginOrSignUp}>
           {isLoggedIn ? "Need to Sign Up?" : "Need to Login?"}
         </button>
+        </nav>
       </div>
     );
   }

@@ -1,12 +1,11 @@
-/* .Container {
-    position: relative;
-    min-height: 300px;
-    max-height: 1000px;
-    overflow: hidden;
-    margin-bottom: 500px;
+.Container {
+    height: 100vh;
+  overflow: hidden;
+  position: absolute;
 }
 
 .Video {
     width: 100%;
-    height: 150%;
-  } */
+  object-fit: cover;
+  height: 100%;
+  }

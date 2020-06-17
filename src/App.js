@@ -88,7 +88,6 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <h1>Recipes</h1>
           {/* <div style={container}>
             <button
               id="microphone-btn"

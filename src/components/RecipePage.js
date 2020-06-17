@@ -1,19 +1,19 @@
 import React from "react";
+import YouTube from "react-youtube";
 
-const favoritesURL= "http://localhost:4000/favorites"
+const favoritesURL = "http://localhost:4000/favorites";
 
 function RecipePage(props) {
-  const createFavorites = () => {
-    console.log(createFavorites)
-    props.addToFavorites(props.instructions[0])
-    props.createFavorites(props.instructions[0])
+  const handleFavorites = () => {
+    props.addToFavorites(props.instructions[0]);
+    props.createFavorites(props.instructions[0]);
   };
 
   const showRecipe = () => {
     return (
       <div>
-        <button onClick={createFavorites}> Add to Favorites</button>
-      
+        <button onClick={handleFavorites}> Add to Favorites</button>
+
         <button
           onClick={() => {
             props.history.push("/favorites");
@@ -21,30 +21,36 @@ function RecipePage(props) {
         >
           View Favorites
         </button>
-        <ul>
-          <img src={props.instructions[0].strMealThumb} />
-          <li className="card">{props.instructions[0].strMeal}</li>
-          <li className="card">
-            How-to video: {props.instructions[0].strYoutube}
-          </li>
-          <li className="card">
-            Ingredients: {props.instructions[0].strMeasure1} of{" "}
-            {props.instructions[0].strIngredient1}
-          </li>
-          <li className="card">
-            Instructions: {props.instructions[0].strInstructions}
-          </li>
-        </ul>
+        <div className="recipe-items">
+          <span className="recipe-item-title"> Ingredients</span>
+          <ul className="checkmark">
+            <li>
+              {props.instructions[0].strMeasure1} of{" "}
+              {props.instructions[0].strIngredient1}
+            </li>
+          </ul>
+        </div>
+        <div className="instructions">
+          <span className="recipe-item-title">Instructions</span>
+          <ul className="checkmark">
+            <li>
+             {props.instructions[0].strInstructions}
+            </li>
+          </ul>
+        </div>
       </div>
     );
   };
   return (
-    <div>
-      <h1>{props.instructions[0].strMeal}</h1>
+    <div className="recipe-container">
+      <div className="recipe-title">
+        <h1>{props.instructions[0].strMeal}</h1>
+      </div>
+      <div className="recipe-video">
+        <YouTube videoId="MWzxDFRtVbc" />
+      </div>
       {props.instructions.length > 0 ? showRecipe() : null}
     </div>
   );
 }
 export default RecipePage;
-
-
