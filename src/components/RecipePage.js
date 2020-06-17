@@ -1,28 +1,19 @@
 import React from "react";
 
+const favoritesURL= "http://localhost:4000/favorites"
+
 function RecipePage(props) {
   const createFavorites = () => {
+    console.log(createFavorites)
     props.addToFavorites(props.instructions[0])
-//     fetch("http://localhost:3000/favorites", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${localStorage.getItem("token")}`,
-//       },
-//       body: JSON.stringify({
-//         name: props.instructions[0].strMeal,
-//         image: props.instructions[0].strMealThumb,
-//         video: props.instructions[0].strYoutube,
-//         ingredients: props.instructions[0].strIngredient1,
-//         instructions: props.instructions[0].strInstructions,
-//       }),
-//     });
+    props.createFavorites(props.instructions[0])
   };
 
   const showRecipe = () => {
     return (
       <div>
         <button onClick={createFavorites}> Add to Favorites</button>
+      
         <button
           onClick={() => {
             props.history.push("/favorites");

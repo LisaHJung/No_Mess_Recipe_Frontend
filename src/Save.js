@@ -61,3 +61,24 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+state = {
+  favorites: [],
+};
+
+setFavorites = (favorites) => {
+  this.setState({ favorites });
+};
+render() {
+  const { favorites } = this.state;
+  return (
+    <div className="App">
+      <h1>Recipes</h1>
+      <Authenticate setFavorites={this.setFavorites} />
+      <RecipesLogic favorites={this.state.favorites}/>
+    </div>
+  );
+}
+}

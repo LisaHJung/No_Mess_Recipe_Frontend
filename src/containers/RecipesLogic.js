@@ -2,15 +2,16 @@ import React from "react";
 import SearchRecipes from "../components/SearchRecipes";
 import RecipePage from "../components/RecipePage";
 import Favorites from "../components/Favorites";
-import FavoritesCard from "../components/FavoritesCard"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+const favoritesURL = "http://localhost:4000/favorites";
 
 class Recipes extends React.Component {
   state = {
     searchInput: "",
     recipes: [],
     instructions: [],
-    favorites: []
+    favorites: [],
   };
 
   captureInput = (event) => {
@@ -45,20 +46,48 @@ class Recipes extends React.Component {
       });
   };
 
+  createFavorites = (recipe) => {
+    fetch(favoritesURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        name: recipe.strMeal,
+        image: recipe.strMealThumb,
+        video: recipe.strYoutube,
+        ingredients: recipe.strIngredient1,
+        instructions: recipe.strInstructions,
+      }),
+    })
+  };
+
+  // fetchFavorites
+  // componentDidMount() {
+  //   fetch
+  //   set state to favorites
+  // }
+
   addToFavorites = (recipe) => {
-    if(!this.state.favorites.find(PinnedRecipe => PinnedRecipe.id === recipe.idMeal))
-    this.setState({
-      favorites: [...this.state.favorites, recipe]
-    })
-  }
+    if (
+      !this.state.favorites.find(
+        (PinnedRecipe) => PinnedRecipe.id === recipe.idMeal
+      )
+    )
+      this.setState({
+        favorites: [...this.state.favorites, recipe],
+      });
+  };
 
-  removeFavorite =(recipe) =>{
-    const filtered = this.state.favorites.filter(PinnedRecipe => PinnedRecipe.id === recipe.idMeal)
+  removeFavorite = (recipe) => {
+    const filtered = this.state.favorites.filter(
+      (PinnedRecipe) => PinnedRecipe.id !== recipe.idMeal
+    );
     this.setState({
-      favorites: filtered
-    })
-  }
-
+      favorites: filtered,
+    });
+  };
 
   render() {
     return (
@@ -67,7 +96,7 @@ class Recipes extends React.Component {
           <Switch>
             <Route
               exact
-              path="/"
+              path="/search"
               render={(props) => (
                 <SearchRecipes
                   {...props}
@@ -90,13 +119,20 @@ class Recipes extends React.Component {
                   fetchRecipeInfo={this.fetchRecipeInfo}
                   favorites={this.state.favorites}
                   addToFavorites={this.addToFavorites}
+                  createFavorites={this.createFavorites}
                   showFavorites={this.showFavorites}
                 />
               )}
             />
             <Route
               path="/favorites"
-              render={(props) => <Favorites {...props} favorites={this.state.favorites} removeFavorite={this.removeFavorite}/>}
+              render={(props) => (
+                <Favorites
+                  {...props}
+                  favorites={this.state.favorites}
+                  removeFavorite={this.removeFavorite}
+                />
+              )}
             />
           </Switch>
         </Router>
