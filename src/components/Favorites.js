@@ -1,8 +1,25 @@
-import React from "react"
+import React from "react";
+import FavoritesCard from "./FavoritesCard"
 
-function Favorites () {
-    return(
-        <h1>Hello</h1>
-    )
+function Favorites(props) {
+  const showFavorites =() =>{
+    return props.favorites.map((recipe)=>(
+      <FavoritesCard key={recipe.id} recipe={recipe} removeFavorite={props.removeFavorite} deleteFromBackend={props.deleteFromBackend}/>
+    ))
+  }
+
+  return (
+    <div>
+      <h1>Favorites Page</h1>
+      <button
+        onClick={() => {
+          props.history.push("/search");
+        }}
+      >
+        Main page
+      </button>
+      {showFavorites()}
+    </div>
+  );
 }
-export default Favorites
+export default Favorites;

@@ -1,12 +1,11 @@
 import React from "react";
 
-const loginURL = "http://localhost:4000/login";
+const usersURL = "http://localhost:4000/users";
 
-class Login extends React.Component {
+class Signup extends React.Component {
   state = {
     username: "",
     password: "",
-    error: "",
   };
 
   handleChange = (event) => {
@@ -17,32 +16,23 @@ class Login extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch(loginURL, {
+    fetch(usersURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify({ user: this.state }),
     })
-      .then((response) => {
-        if (response.status === 200) {
-            this.setState({ error: ''})
-          return response.json();
-        } else if (response.status === 401) {
-          throw new Error("Please try again");
-        }
-      })
+      .then((response) => response.json())
       .then((result) => {
         localStorage.setItem("token", result.token);
-        this.props.history.push("/search")
-      })
-      .catch((error) => this.setState({ error: error.message }));
+      });
   };
 
   render() {
-    const { username, password, error } = this.state;
+    const { username, password } = this.state;
     return (
-      <form className="login" onSubmit={this.handleSubmit}>
+      <form className="signup" onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="username"
@@ -57,11 +47,10 @@ class Login extends React.Component {
           placeholder="password"
           onChange={this.handleChange}
         />
-        <input type="submit" value="login" />
-        {error ? <p>{error}</p> : null}
+        <input type="submit" value="sign up" />
       </form>
     );
   }
 }
 
-export default Login;
+export default Signup;

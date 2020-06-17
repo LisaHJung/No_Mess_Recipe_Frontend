@@ -1,10 +1,19 @@
 import React from "react";
 
+const favoritesURL= "http://localhost:4000/favorites"
+
 function RecipePage(props) {
+  const createFavorites = () => {
+    console.log(createFavorites)
+    props.addToFavorites(props.instructions[0])
+    props.createFavorites(props.instructions[0])
+  };
+
   const showRecipe = () => {
     return (
       <div>
-        <button> Add to Favorites</button>
+        <button onClick={createFavorites}> Add to Favorites</button>
+      
         <button
           onClick={() => {
             props.history.push("/favorites");
@@ -13,6 +22,8 @@ function RecipePage(props) {
           View Favorites
         </button>
         <ul>
+          <img src={props.instructions[0].strMealThumb} />
+          <li className="card">{props.instructions[0].strMeal}</li>
           <li className="card">
             How-to video: {props.instructions[0].strYoutube}
           </li>
@@ -35,3 +46,5 @@ function RecipePage(props) {
   );
 }
 export default RecipePage;
+
+
