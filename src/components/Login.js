@@ -1,5 +1,4 @@
 import React from "react";
-import {Redirect} from 'react-router-dom'
 
 const loginURL = "http://localhost:4000/login";
 
@@ -35,7 +34,7 @@ class Login extends React.Component {
       })
       .then((result) => {
         localStorage.setItem("token", result.token);
-        // this.props.setFavorites(result.favorites)
+        this.props.history.push("/search")
       })
       .catch((error) => this.setState({ error: error.message }));
   };

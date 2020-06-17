@@ -12,10 +12,11 @@ class Authenticate extends React.Component {
   };
   render() {
     const { isLoggedIn } = this.state;
-    const {setFavorites} = this.props
+    const {history} = this.props
+ 
     return (
       <div className="authenticate">
-        {isLoggedIn ? <Login /> : <Signup />}
+        {isLoggedIn ? <Login history={history}/> : <Signup />}
         <button onClick={this.toggleLoginOrSignUp}>
           {isLoggedIn ? "Need to Sign Up?" : "Need to Login?"}
         </button>
