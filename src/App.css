@@ -35,6 +35,7 @@ form {
 .card-container {
   width: 80%;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }

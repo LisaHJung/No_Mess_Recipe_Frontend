@@ -7,10 +7,12 @@ function FavoritesCard(props) {
     }
 
   return (
-    <div className="card">
-      <img src={props.recipe.image} alt="food" />
-      <h3>{props.recipe.name}</h3>
-      <button onClick={handleDelete}> Delete Favorite</button>
+    <div className="card-container">
+      <div className="card">
+        <img src={props.recipe.image} alt="food" />
+        <h3>{props.recipe.name}</h3>
+        <button onClick={handleDelete}> Delete Favorite</button>
+      </div>
     </div>
   );
 }

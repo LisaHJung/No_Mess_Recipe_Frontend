@@ -13,7 +13,7 @@ function Favorites(props) {
       <h1>Favorites Page</h1>
       <button
         onClick={() => {
-          props.history.push("/");
+          props.history.push("/search");
         }}
       >
         Main page
