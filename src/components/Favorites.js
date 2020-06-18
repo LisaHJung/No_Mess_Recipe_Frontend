@@ -3,6 +3,7 @@ import FavoritesCard from "./FavoritesCard"
 
 function Favorites(props) {
   const showFavorites =() =>{
+    console.log('favorites: ', props.favorites);
     return props.favorites.map((recipe)=>(
       <FavoritesCard key={recipe.id} recipe={recipe} removeFavorite={props.removeFavorite} deleteFromBackend={props.deleteFromBackend}/>
     ))

@@ -3,24 +3,30 @@ import React from "react";
 import "./App.css";
 import Authenticate from "./components/Authenticate";
 import RecipesLogic from "./containers/RecipesLogic";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 
 class App extends React.Component {
-
   render() {
     return (
       <Router>
-         <div className="App">
-          <Route
-            exact
-            path="/"
-            render={(routerProps) => {
-              return <Authenticate {...routerProps} />;
-            }}
-          />
-          <Route exact path="/search">
-            {localStorage.token ? <RecipesLogic /> : <Redirect to="/" />}
-          </Route>
+        <div className="App">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={(routerProps) => {
+                return <Authenticate {...routerProps} />;
+              }}
+            />
+            <Route>
+              <RecipesLogic />
+            </Route>
+          </Switch>
         </div>
       </Router>
     );
