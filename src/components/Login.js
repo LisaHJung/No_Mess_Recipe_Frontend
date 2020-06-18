@@ -1,4 +1,5 @@
 import React from "react";
+import BackgroundVideo from "./BackgroundVideo"
 
 const loginURL = "http://localhost:4000/login";
 
@@ -42,7 +43,9 @@ class Login extends React.Component {
   render() {
     const { username, password, error } = this.state;
     return (
-      <form className="login" onSubmit={this.handleSubmit}>
+      <div>
+        <nav className="navbar navbar-dark fixed-top"> 
+        <form className="login" onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="username"
@@ -60,6 +63,11 @@ class Login extends React.Component {
         <input type="submit" value="login" />
         {error ? <p>{error}</p> : null}
       </form>
+      </nav>
+        <BackgroundVideo />
+
+      </div>
+      
     );
   }
 }

@@ -9,8 +9,8 @@ function FavoritesCard(props) {
   return (
     <div className="card-container">
       <div className="card">
-        <img src={props.recipe.image} alt="food" />
-        <h3>{props.recipe.name}</h3>
+        <img src={props.recipe.image || props.recipe.strMealThumb} alt="food" />
+        <h3>{props.recipe.name || props.recipe.strMeal}</h3>
         <button onClick={handleDelete}> Delete Favorite</button>
       </div>
     </div>

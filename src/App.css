@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 *{
-  font-family: Montserrat, arial, sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 body {
@@ -16,8 +16,16 @@ body {
   background-color: gray;
 }
 
-form {
+.navbar {
+  background: rgba(8, 8, 8, 0.6);
+  display: flex;
+  justify-content: flex-end;
+  height: 5rem;
+}
+
+.search-form {
   text-align: center;
+  justify-content: center;
 }
 
 .search-box {
@@ -28,8 +36,7 @@ form {
   border-radius: 20px;
   outline: none;
   text-align: center;
-  font-size: 14px;
-  font-family: "Montserrat", sans-serif;
+  font-size: 14px;  
 }
 
 .card-container {
@@ -39,15 +46,17 @@ form {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .card {
   width: 300px;
   height: auto;
   box-shadow: 5px 5px 5px rgb(114, 114, 114);
   border-radius: 5px;
   padding: 10px;
-  background-color: rgba(23, 23, 23, 1);
+  background-color:#455560;;
   color: whitesmoke;
-  margin-bottom: 10px;
+  margin: 0.385rem;
+  margin-bottom: 30px;
 }
 .card img {
   height: 20rem;
@@ -58,14 +67,70 @@ form {
   cursor: pointer;
 }
 
-.nav-bar {
-  display: flex;
-  justify-content: space-around;
+.recipe-container {
+  background: #ededed;
+  box-shadow: 0px 0px 200px #999;
+  font-family: 'Oxygen', sans-serif;
+  width: 65%;
+  height: 526px;
+  margin: 5% auto;
+}
+
+.recipe-title {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  background: #455560;
+  padding: 15px 20px;
+  color: #fff;
+  border-radius: 2px 2px 0 0;
+}
+
+.recipe-items {
+  background: #cecccc;
+  font-family: 'Oxygen', sans-serif;
+  padding: 20px
+}
+
+.recipe-item-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+ul.checkmark li:before {
+    color: #455560;
+    content:"\2713\0020";
+    font-weight: 600;
+    margin-left: -38px;
+    margin-right: 10px;
+}
+
+.checkmark li {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 3px;
+}
+
+.instructions {
+  background: #fff;
+  border-left: solid 1px #ededed;
+  border-right: solid 1px #ededed;
+  border-bottom: solid 1px #ededed;
+  padding: 20px;
+}
+
+.instructions li {
+  list-style-position: inside;
+  margin-bottom: 10px;
+  margin-left: -38px;
+  list-style-type: none;
 }
 
 form{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 30%;
 }
 
