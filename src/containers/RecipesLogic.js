@@ -39,6 +39,25 @@ class Recipes extends React.Component {
     )
       .then((response) => response.json())
       .then((instructions) => {
+        const set = instructions.meals[0]
+        const keys = Object.keys(set) // array of all keys in the data
+        const i = keys.filter(a => a.includes('Ingredient') && set[a] !== null && set[a] !== "") // get all keys that have ingredient in them and filter any empty or null values
+        
+        const ingredientList = i.map(i => {
+          let obj = {}
+          // here, i = "strIngredient1"
+          let num = i.split("").pop() // this will give us "1"
+          let measurementKey = 'strMeasure'+num
+          let measurementValue = set[measurementKey] // give us value of the measurement at the ingredient we care about
+          // this is the object we ultimately want: { ingredient: "soy sauce", measurement: "1/2 cup" }
+          obj.ingredient = set[i] // this gives us the actual ingredient name by getting the value for i in the set
+          obj.measurement = measurementValue
+          return obj
+        })
+
+        instructions.meals.ingredientList = ingredientList
+        instructions.meals.normalizedDirections = instructions.meals[0].strInstructions.split(".").map(x => x.trim())
+
         this.setState({
           instructions: instructions.meals,
         });
@@ -95,8 +114,8 @@ class Recipes extends React.Component {
     const filtered = this.state.favorites.filter(
       (PinnedRecipe) => {
         console.log("pinned recipe" , PinnedRecipe)
-        console.log("recipe", recipe)
-        return PinnedRecipe.id !== recipe.id
+        console.log(recipe)
+        return PinnedRecipe.id !== recipe.idMeal
       }
     );
     this.setState({

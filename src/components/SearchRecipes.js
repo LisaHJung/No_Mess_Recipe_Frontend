@@ -7,6 +7,7 @@ const SearchRecipes = (props) => {
       <form className="search-form" onSubmit={props.fetchRecipes}>
         <input
           className="search-box"
+          id="search-box"
           name="searchInput"
           onChange={props.captureInput}
           type="text"

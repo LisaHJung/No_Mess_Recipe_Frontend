@@ -10,6 +10,7 @@ function RecipePage(props) {
   };
 
   const showRecipe = () => {
+
     return (
       <div>
         <button onClick={handleFavorites}> Add to Favorites</button>
@@ -24,19 +25,25 @@ function RecipePage(props) {
         <div className="recipe-items">
           <span className="recipe-item-title"> Ingredients</span>
           <ul className="checkmark">
-            <li>
-              {props.instructions[0].strMeasure1} of{" "}
-              {props.instructions[0].strIngredient1}
-            </li>
+            {props.instructions.ingredientList.map(i => {
+              return (
+              <li>
+                {i.measurement} of{" "}
+                {i.ingredient}
+              </li>)
+            })}
           </ul>
         </div>
         <div className="instructions">
           <span className="recipe-item-title">Instructions</span>
-          <ul className="checkmark">
-            <li>
-             {props.instructions[0].strInstructions}
-            </li>
-          </ul>
+          <ol>
+          {props.instructions.normalizedDirections.map(i => {
+              return (
+              <li>
+                {i}
+              </li>)
+            })}
+          </ol>
         </div>
       </div>
     );

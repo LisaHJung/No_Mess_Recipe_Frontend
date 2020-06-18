@@ -44,7 +44,7 @@ class Login extends React.Component {
     const { username, password, error } = this.state;
     return (
       <div>
-      
+        <nav className="navbar navbar-dark fixed-top"> 
         <form className="login" onSubmit={this.handleSubmit}>
         <input
           type="text"
@@ -63,7 +63,7 @@ class Login extends React.Component {
         <input type="submit" value="login" />
         {error ? <p>{error}</p> : null}
       </form>
-   
+      </nav>
         <BackgroundVideo />
 
       </div>
