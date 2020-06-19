@@ -14,7 +14,6 @@ const favoritesURL = "http://localhost:4000/favorites";
 class Recipes extends React.Component {
   constructor() {
     super();
-    console.log("heloo?");
   }
   state = {
     searchInput: "",
@@ -49,19 +48,19 @@ class Recipes extends React.Component {
       .then((response) => response.json())
       .then((instructions) => {
         const set = instructions.meals[0];
-        const keys = Object.keys(set); // array of all keys in the data
+        const keys = Object.keys(set);
         const i = keys.filter(
           (a) => a.includes("Ingredient") && set[a] !== null && set[a] !== ""
-        ); // get all keys that have ingredient in them and filter any empty or null values
+        );
 
         const ingredientList = i.map((i) => {
           let obj = {};
-          // here, i = "strIngredient1"
-          let num = i.split("").pop(); // this will give us "1"
+
+          let num = i.split("").pop();
           let measurementKey = "strMeasure" + num;
-          let measurementValue = set[measurementKey]; // give us value of the measurement at the ingredient we care about
-          // this is the object we ultimately want: { ingredient: "soy sauce", measurement: "1/2 cup" }
-          obj.ingredient = set[i]; // this gives us the actual ingredient name by getting the value for i in the set
+          let measurementValue = set[measurementKey];
+
+          obj.ingredient = set[i];
           obj.measurement = measurementValue;
           return obj;
         });
@@ -140,7 +139,6 @@ class Recipes extends React.Component {
   };
 
   render() {
-    console.log("recipes logic render");
     if (!localStorage.token) {
       return <Redirect to="/" />;
     }

@@ -38,7 +38,7 @@ class Speech extends Component {
         recognition.start();
       };
     } else {
-      recognition.end();
+      recognition.stop();
       recognition.onend = () => {
         console.log("Stopped listening per click");
       };
@@ -118,8 +118,8 @@ const styles = {
   button: {
     width: "60px",
     height: "60px",
-    background: "lightblue",
-    borderRadius: "50%",
+    background: "red",
+    borderRadius: "100%",
     margin: "6em 0 2em 0",
   },
   final: {

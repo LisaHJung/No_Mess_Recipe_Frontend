@@ -21,19 +21,19 @@ class RecipePage extends React.Component {
       .then((response) => response.json())
       .then((instructions) => {
         const set = instructions.meals[0];
-        const keys = Object.keys(set); // array of all keys in the data
+        const keys = Object.keys(set);
         const i = keys.filter(
           (a) => a.includes("Ingredient") && set[a] !== null && set[a] !== ""
-        ); // get all keys that have ingredient in them and filter any empty or null values
+        );
 
         const ingredientList = i.map((i) => {
           let obj = {};
-          // here, i = "strIngredient1"
-          let num = i.split("").pop(); // this will give us "1"
+
+          let num = i.split("").pop();
           let measurementKey = "strMeasure" + num;
-          let measurementValue = set[measurementKey]; // give us value of the measurement at the ingredient we care about
-          // this is the object we ultimately want: { ingredient: "soy sauce", measurement: "1/2 cup" }
-          obj.ingredient = set[i]; // this gives us the actual ingredient name by getting the value for i in the set
+          let measurementValue = set[measurementKey];
+
+          obj.ingredient = set[i];
           obj.measurement = measurementValue;
           return obj;
         });
@@ -64,6 +64,7 @@ class RecipePage extends React.Component {
   showRecipe() {
     return (
       <div>
+        <div className="add-view-button">
         <button onClick={this.handleFavorites}> Add to Favorites</button>
 
         <button
@@ -73,6 +74,7 @@ class RecipePage extends React.Component {
         >
           View Favorites
         </button>
+        </div>
         <div className="recipe-items">
           <span className="recipe-item-title"> Ingredients</span>
           <ul className="checkmark">
@@ -99,7 +101,6 @@ class RecipePage extends React.Component {
 
   render() {
     if (!this.state.instructions.length) {
-      // do display something that you don't have a recipe selected or reroute
       return null;
     }
 
@@ -110,7 +111,7 @@ class RecipePage extends React.Component {
         </div>
         <div className="recipe-banner">
           <div className="recipe-banner-column">
-            <YouTube videoId="MWzxDFRtVbc" />
+            <YouTube videoId="IO0issT0Rmc" />
           </div>
           <div className="recipe-banner-column">
             <SpeechRecognition />

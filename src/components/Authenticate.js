@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "./Login";
 import Signup from "./Signup";
+import BackgroundVideo from "./BackgroundVideo";
 
 class Authenticate extends React.Component {
   state = {
@@ -12,16 +13,17 @@ class Authenticate extends React.Component {
   };
   render() {
     const { isLoggedIn } = this.state;
-    const {history} = this.props
- 
+    const { history } = this.props;
+
     return (
       <div className="authenticate">
-        <nav className="navbar navbar-dark fixed-top"> 
-        {isLoggedIn ? <Login history={history}/> : <Signup />}
-        <button onClick={this.toggleLoginOrSignUp}>
-          {isLoggedIn ? "Need to Sign Up?" : "Need to Login?"}
-        </button>
+        <nav className="navbar navbar-dark fixed-top">
+          {isLoggedIn ? <Login history={history} /> : <Signup />}
+          <button onClick={this.toggleLoginOrSignUp}>
+            {isLoggedIn ? "Need to Sign Up?" : "Need to Login?"}
+          </button>
         </nav>
+        <BackgroundVideo />
       </div>
     );
   }

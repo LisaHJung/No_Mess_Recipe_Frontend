@@ -1,5 +1,4 @@
 import React from "react";
-import BackgroundVideo from "./BackgroundVideo"
 
 const loginURL = "http://localhost:4000/login";
 
@@ -27,7 +26,7 @@ class Login extends React.Component {
     })
       .then((response) => {
         if (response.status === 200) {
-            this.setState({ error: ''})
+          this.setState({ error: "" });
           return response.json();
         } else if (response.status === 401) {
           throw new Error("Please try again");
@@ -35,39 +34,33 @@ class Login extends React.Component {
       })
       .then((result) => {
         localStorage.setItem("token", result.token);
-        this.props.history.push("/search")
+        this.props.history.push("/search");
       })
       .catch((error) => this.setState({ error: error.message }));
   };
 
   render() {
     const { username, password, error } = this.state;
-    return (
-      <div>
-        <nav className="navbar navbar-dark fixed-top"> 
-        <form className="login" onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          placeholder="username"
-          onChange={this.handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          placeholder="password"
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="login" />
-        {error ? <p>{error}</p> : null}
-      </form>
-      </nav>
-        <BackgroundVideo />
 
-      </div>
-      
+    return (
+          <form className="login" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              placeholder="username"
+              onChange={this.handleChange}
+            />
+            <input
+              type="password"
+              name="password"
+              value={password}
+              placeholder="password"
+              onChange={this.handleChange}
+            />
+            <input type="submit" value="login" />
+            {error ? <p>{error}</p> : null}
+          </form>
     );
   }
 }

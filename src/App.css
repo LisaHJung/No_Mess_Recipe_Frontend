@@ -13,131 +13,28 @@ body {
   background-attachment: fixed;
   background-origin: initial;
   background-clip: initial;
-  background-color: gray;
+
 }
+/* login page styling */
 
 .navbar {
-  background: rgba(8, 8, 8, 0.6);
+  background: rgb(31, 30, 30);
   display: flex;
   justify-content: flex-end;
-  height: 5rem;
-}
-
-.search-form {
-  text-align: center;
-  justify-content: center;
-}
-
-.search-box {
-  height: 30px;
-  width: 300px;
-  padding: 5px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  text-align: center;
-  font-size: 14px;  
-}
-
-.card-container {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.card {
-  width: 300px;
-  height: auto;
-  box-shadow: 5px 5px 5px rgb(114, 114, 114);
-  border-radius: 5px;
-  padding: 10px;
-  background-color:#455560;;
-  color: whitesmoke;
-  margin: 0.385rem;
-  margin-bottom: 30px;
-}
-.card img {
-  height: 20rem;
-  width: 15rem;
-  padding: 10px;
-  margin: 50px 20px 30px 20px;
-  border-radius: 17px;
-  cursor: pointer;
-}
-
-.recipe-container {
-  background: #ededed;
-  box-shadow: 0px 0px 200px #999;
-  font-family: 'Oxygen', sans-serif;
-  width: 65%;
-  height: 526px;
-  margin: 5% auto;
-}
-
-.recipe-title {
-  font-family: 'Oxygen', sans-serif;
-  font-weight: 700;
-  font-size: 25px;
-  background: #455560;
-  padding: 15px 20px;
-  color: #fff;
-  border-radius: 2px 2px 0 0;
-}
-
-.recipe-items {
-  background: #cecccc;
-  font-family: 'Oxygen', sans-serif;
-  padding: 20px
-}
-
-.recipe-item-title {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-ul.checkmark li:before {
-    color: #455560;
-    content:"\2713\0020";
-    font-weight: 600;
-    margin-left: -38px;
-    margin-right: 10px;
-}
-
-.checkmark li {
-  list-style-type: none;
-}
-
-li {
-  margin-bottom: 3px;
-}
-
-.instructions {
-  background: #fff;
-  border-left: solid 1px #ededed;
-  border-right: solid 1px #ededed;
-  border-bottom: solid 1px #ededed;
-  padding: 20px;
-}
-
-.instructions li {
-  list-style-position: inside;
-  margin-bottom: 10px;
-  margin-left: -38px;
-  list-style-type: none;
+  height: 4.2rem;
 }
 
 form{
   display: flex;
   flex-direction: row;
-  width: 30%;
+  margin-bottom: 0.5rem;
 }
 
 form > input {
   margin-top: 0.5rem;
   border-radius:5px;
   padding: 0.2rem;
+  font-size: 20px; 
 }
 
 form > input[type= submit] {
@@ -152,11 +49,45 @@ form > input[type= submit]:hover {
 button {
   padding: 0.3rem;
   margin: 0.5rem 0;
-  background-color: lightslategray;
+  background-color: rgb(222, 225, 228);
   font-weight: 700;
   cursor: pointer;
 }
 
 button:hover{
-  background-color: rgb(100, 114, 128);
+  background-color: rgb(194, 195, 197);
+}
+
+/* search page styling */
+
+.search-form {
+  text-align: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.search-box {
+    text-align: center;
+    font-size: 30px;
+    justify-content: center;
+    height: 60px;
+    width: 800px;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    margin-left: 1200px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.search-bar{
+  justify-content: center;
+}
+
+.nav-bar1 {
+  background: rgb(31, 30, 30);
+  display: flex;
+  justify-content: flex-end;
+  height: 4.2rem;
 }
