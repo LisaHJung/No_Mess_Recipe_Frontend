@@ -38,7 +38,7 @@ class Speech extends Component {
         recognition.start();
       };
     } else {
-      recognition.end();
+      recognition.stop();
       recognition.onend = () => {
         console.log("Stopped listening per click");
       };
@@ -95,6 +95,7 @@ class Speech extends Component {
   render() {
     return (
       <div style={container}>
+        <p>Click on the red button to initiate speech command</p>
         <button
           id="microphone-btn"
           style={button}
@@ -114,12 +115,12 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center",
+    fontWeight: "bold"  
   },
   button: {
     width: "60px",
     height: "60px",
-    background: "lightblue",
-    borderRadius: "50%",
+    background: "red",
     margin: "6em 0 2em 0",
   },
   final: {
