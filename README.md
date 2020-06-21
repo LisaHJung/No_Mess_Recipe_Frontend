@@ -53,10 +53,10 @@ npm start
 
 ## App in Action
 
-* Login/Sign up component. Using the button, you can toggle between log in or sign up form. Upon sign up, login, the app will take you to the main page. 
+* Using the "Need to...?" button, you can toggle between log in or sign up form. Upon sign up or login, the app will take you to the main page. 
    ![Login](https://user-images.githubusercontent.com/60980933/85210208-32616300-b2fb-11ea-994b-1010ad198d25.gif)
    
-* Enter the main ingredient you want to cook with and the app will pull up all the recipes that matches your search input. Upon clicking view recipe button, recipe page with embedded how-to video, ingredients, instructions, and speech recognition button are rendered to the page. 
+* Enter the main ingredient you want to cook with and the app will pull up all the recipes that matches your search input. Upon clicking the view recipe button, recipe page with how-to video, ingredients, instructions, and speech recognition button are rendered to the page. 
    ![search_recipe_page](https://user-images.githubusercontent.com/60980933/85211146-60e33c00-b303-11ea-837e-eb6ee7b3517f.gif)
 
 * Click on the red button to initiate speech command and speech synthesis functionalities. Say scroll down to move the page down and scroll up to move the page up. 
